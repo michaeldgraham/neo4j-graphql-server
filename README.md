@@ -35,7 +35,7 @@ A central goal of this project is to use Neo4j graph databases and Apollo server
 
 ### Contact
 
-I find the possibility of using GraphQL with Neo4j graph databases very interesting because I'm interested in the underlying activity of people using graph theoretic resources to build up complex descriptions of the world. I'm very happy to see that there is a lot of activity with these technologies and would love to support the development communities in any way I can!
+I find the possibility of using GraphQL with Neo4j graph databases very interesting because I'm interested in the underlying activity of people using graph theoretic resources to build up complex descriptions of the world. I'm very happy to see a lot of activity with these technologies and would love to support the development communities in any way I can.
 
 If you want to work together or need help with something, feel free to email me at michaeldgrahams@gmail.com or reach out on [LinkedIn](https://www.linkedin.com/in/michael-d-graham/) or [Twitter](https://twitter.com/michaeldgrahams).
 
