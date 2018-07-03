@@ -10,7 +10,7 @@ The [Apollo Platform](https://www.apollographql.com/) provides a variety of tech
 
 ### Goal
 
-The goal of this project is to use Neo4j graph databases and Apollo server and networking resources to support progressively enhancing a GraphQL API that draws from current developments within the GraphQL community and further explores using GraphQL with graph databases. Given that Neo4j uses a property graph model, it should be interesting to develop features that take advantage of [relationship properties](https://neo4j.com/docs/developer-manual/current/introduction/graphdb-concepts/#graphdb-neo4j-properties).
+A central goal of this project is to use Neo4j graph databases and Apollo server and networking resources to support progressively enhancing a GraphQL API that draws from current developments within the GraphQL community and further explores using GraphQL with graph databases. Given that Neo4j uses a property graph model, it should be interesting to develop features that take advantage of [relationship properties](https://neo4j.com/docs/developer-manual/current/introduction/graphdb-concepts/#graphdb-neo4j-properties).
 
 ### Features
 
