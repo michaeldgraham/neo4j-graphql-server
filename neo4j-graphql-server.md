@@ -188,83 +188,64 @@ query {
 
 ### Using @cypher Directives
 
-The below `typeDefs` shows the use of the `@cypher` directive for a computed field, a query, and a mutation type. Any `query` and `mutation` types, or `resolvers`, that you provide are _not overwritten_ by the schema augmenting process:
+The below `typeDefs` shows the use of the `@cypher` directive for a computed field, a query, and a mutation type. Any `query` and `mutation` types, or `resolvers`, that you provide are _not overwritten_ by the schema augmenting process. 
+
+`typeDefs`
+
+```graphql
+type Technology @model {
+  name: String! @unique
+  integration: [Technology] @relation(name: "HAPPINESS", direction: OUT)
+  # Computed field
+  integrationCount: Int @cypher(statement: """ 
+    MATCH (this)-[:HAPPINESS]->(t:Technology)
+    RETURN count(t)
+  """)
+}
+type Query {
+  # Custom @cypher query with same name as generated query type
+  Technology: [Technology] @cypher(statement: """
+    MATCH (t:Technology) RETURN t
+  """)
+}
+type Mutation {
+  # Custom delete mutation
+  deleteTechnology(id: ID!): Boolean @cypher(statement: """
+    MATCH (t: Technology {id: $id})
+    DETACH DELETE t
+    RETURN TRUE
+  """)
+}
+schema {
+  query: Query
+  mutation: Mutation
+}
+```
+
+The corresponding `resolvers` can be provided and use bindings as shown:
 
 ```javascript
-import { Neo4jGraphQLServer } from 'neo4j-graphql-server';
-import { v1 as neo4j } from 'neo4j-driver';
-
-const driver = neo4j.driver(
-  process.env.NEO4J_URI || "bolt://localhost:7687",
-  neo4j.auth.basic(
-    process.env.NEO4J_USER || "neo4j",
-    process.env.NEO4J_PASSWORD || "neo4j"
-  )
-);
-
-const typeDefs = `
-  type Technology @model {
-    name: String! @unique
-    integration: [Technology] @relation(name: "HAPPINESS", direction: OUT)
-    # Computed field
-    integrationCount: Int @cypher(statement: """ 
-      MATCH (this)-[:HAPPINESS]->(t:Technology)
-      RETURN count(t)
-    """)
+Query: {
+  // Resolver for a provided @cypher query type with the same name 
+  // as a generated query type
+  Technology: (obj, params, ctx, info) => {
+    return ctx.neo4j.query.Technology(params, info);
   }
-  type Query {
-    # Custom @cypher query with same name as generated query type
-    Technology: [Technology] @cypher(statement: """
-      MATCH (t:Technology) RETURN t
-    """)
+},
+Mutation: {
+  // Resolver for auto-generated mutation type
+  createTechnology: async (obj, params, ctx, info) => {
+    const result = await ctx.neo4j.mutation.createTechnology(params, info);
+    // post-processing of result
+    return result;
   }
-  type Mutation {
-    # Custom delete mutation
-    deleteTechnology(id: ID!): Boolean @cypher(statement: """
-      MATCH (t: Technology {id: $id})
-      DETACH DELETE t
-      RETURN TRUE
-    """)
-  }
-  schema {
-    query: Query
-    mutation: Mutation
-  }
-`;
-
-const resolvers = {
-  Query: {
-    // Resolver for a provided @cypher query type with the same name 
-    // as a generated query type
-    Technology: (obj, params, ctx, info) => {
-      return ctx.neo4j.query.Technology(params, info);
-    }
-  },
-  Mutation: {
-    // Resolver for auto-generated mutation type
-    createTechnology: async (obj, params, ctx, info) => {
-      const result = await ctx.neo4j.mutation.createTechnology(params, info);
-      // post-processing of result
-      return result;
-    }
-    // deleteTechnology resolver is generated
-  }
-};
-const server = Neo4jGraphQLServer({
-  typeDefs: typeDefs,
-  resolvers: resolvers,
-  driver: driver,
-  log: true
-});
-
-server.listen().then( ({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
-});
+  // deleteTechnology resolver is generated
+}
 ```
 
 ### Using Multiple Bindings
 
-See the section on using the [GraphQL Community Graph](https://neo4j-graphql-binding.gitbook.io/neo4j-graphql-binding/~/drafts/-LGMw3hveOAgWUI_QtyJ/primary/graphql-community-data) for an example on configuring bindings for multiple local or remote Neo4j instances with the Neo4j-GraphQL extension available.
+See the section on using the [GraphQL Community Graph](https://neo4j-graphql-server.gitbook.io/neo4j-graphql-server/neo4j-graphql-server) for an example on configuring bindings for multiple local or remote Neo4j instances with the Neo4j-GraphQL extension available.
 
 ### Prism Graph
 
