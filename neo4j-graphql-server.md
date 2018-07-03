@@ -4,8 +4,6 @@ description: A quick way to get started using neo4j-graphql-binding with Apollo 
 
 # Neo4j GraphQL Server
 
-
-
 ## Installation
 
 ```text
