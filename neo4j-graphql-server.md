@@ -18,11 +18,11 @@ npm install -s neo4j-graphql-server
 
 The following describes the server setup process based on the default configuration:
 
-1. [neo4jIDL](https://neo4j-graphql-server.gitbook.io/neo4j-graphql-server/~/drafts/-LGWoo4HvGsWb3Dek8dG/primary/api-reference/neo4jidl-1) is called to update your Neo4j-GraphQL schema.  
-2. [neo4jAssertConstraints](https://neo4j-graphql-server.gitbook.io/neo4j-graphql-server/~/edit/drafts/-LGWoo4HvGsWb3Dek8dG/neo4j-graphql-server) is used to support a `@unique` directive by [creating constraints](https://neo4j.com/docs/developer-manual/current/get-started/cypher/labels-constraints-and-indexes/) in your Neo4j instance. It uses the [APOC extension](https://neo4j-contrib.github.io/neo4j-apoc-procedures/). 
-3. [buildNeo4jTypeDefs](https://neo4j-graphql-server.gitbook.io/neo4j-graphql-server/~/edit/drafts/-LGWoo4HvGsWb3Dek8dG/neo4j-graphql-server) then augments the same typeDefs provided to your Neo4j-GraphQL schema.  
-4. [neo4jGraphQLBinding](https://neo4j-graphql-server.gitbook.io/neo4j-graphql-server/~/edit/drafts/-LGWoo4HvGsWb3Dek8dG/neo4j-graphql-server) is used to create a [custom GraphQL Binding](https://oss.prisma.io/content/GraphQL-Binding/04-Creating-your-own-Binding.html) over the resulting augmented typeDefs. The binding is added into your server's [context parameter](https://www.apollographql.com/docs/apollo-server/v2/api/apollo-server.html#constructor-options-lt-ApolloServer-gt) \(default key: 'neo4j' so you can access it the way you normally would access a GraphQL Binding.  
-5. [buildNeo4jResolvers](https://neo4j-graphql-server.gitbook.io/neo4j-graphql-server/~/edit/drafts/-LGWoo4HvGsWb3Dek8dG/neo4j-graphql-server) then generates any unprovided resolvers for query and mutation types that were generated or that use a [@cypher directive](https://github.com/neo4j-graphql/neo4j-graphql#directives). Each resolver uses a created binding to delegate all such queries and mutations to a Neo4j-GraphQL endpoint.  
+1. [neo4jIDL](https://neo4j-graphql-server.gitbook.io/docs/~/edit/drafts/-LGX6JNh-j0a30En86gg/neo4j-graphql-server) is called to update your Neo4j-GraphQL schema.  
+2. [neo4jAssertConstraints](https://neo4j-graphql-server.gitbook.io/docs/~/edit/drafts/-LGX6JNh-j0a30En86gg/neo4j-graphql-server) is used to support a `@unique` directive by [creating constraints](https://neo4j.com/docs/developer-manual/current/get-started/cypher/labels-constraints-and-indexes/) in your Neo4j instance. It uses the [APOC extension](https://neo4j-contrib.github.io/neo4j-apoc-procedures/). 
+3. [buildNeo4jTypeDefs](https://neo4j-graphql-server.gitbook.io/docs/~/edit/drafts/-LGX6JNh-j0a30En86gg/neo4j-graphql-server) then augments the same typeDefs provided to your Neo4j-GraphQL schema.  
+4. [neo4jGraphQLBinding](https://neo4j-graphql-server.gitbook.io/docs/~/edit/drafts/-LGX6JNh-j0a30En86gg/neo4j-graphql-server) is used to create a [custom GraphQL Binding](https://oss.prisma.io/content/GraphQL-Binding/04-Creating-your-own-Binding.html) over the resulting augmented typeDefs. The binding is added into your server's [context parameter](https://www.apollographql.com/docs/apollo-server/v2/api/apollo-server.html#constructor-options-lt-ApolloServer-gt) \(default key: 'neo4j' so you can access it the way you normally would access a GraphQL Binding.  
+5. [buildNeo4jResolvers](https://neo4j-graphql-server.gitbook.io/docs/~/edit/drafts/-LGX6JNh-j0a30En86gg/neo4j-graphql-server) then generates any unprovided resolvers for query and mutation types that were generated or that use a [@cypher directive](https://github.com/neo4j-graphql/neo4j-graphql#directives). Each resolver uses a created binding to delegate all such queries and mutations to a Neo4j-GraphQL endpoint.  
 6. Finally, steps 1-5 are processed for any additional binding configurations provided in `bindings` and the resulting `typeDefs` and `resolvers` are merged and provided to Apollo Server.
 
 ## Quick Start
@@ -245,7 +245,7 @@ Mutation: {
 
 ### Using Multiple Bindings
 
-See the section on using the [GraphQL Community Graph](https://neo4j-graphql-server.gitbook.io/neo4j-graphql-server/neo4j-graphql-server) for an example on configuring bindings for multiple local or remote Neo4j instances with the Neo4j-GraphQL extension available.
+See the section on [using the GraphQL Community Graph](https://neo4j-graphql-server.gitbook.io/docs/~/edit/drafts/-LGX6JNh-j0a30En86gg/neo4j-graphql-server) for an example of configuring bindings for multiple local or remote Neo4j instances with the Neo4j-GraphQL extension available.
 
 ### Prism Graph
 
