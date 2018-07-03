@@ -1,18 +1,18 @@
 # Introduction
 
-It seems that [GraphQL](https://graphql.org/) users could benefit from using __[graph databases](https://neo4j.com/developer/graph-database/) and graph database users could benefit from using GraphQL. Thankfully, much has already been done to support this direction.
+It seems that [GraphQL](https://graphql.org/) users could benefit from using [graph databases](https://neo4j.com/developer/graph-database/) and graph database users could benefit from using GraphQL. Thankfully, much has already been done to support this direction.
 
-As part of the [GRANDstack](https://grandstack.io/) project, [Neo4j](https://neo4j.com/) has built a GraphQL-Endpoint extension named [Neo4j-GraphQL](https://github.com/neo4j-graphql/neo4j-graphql), which provides an [auto-generated API](https://github.com/neo4j-graphql/neo4j-graphql#auto-generated-query-types) and custom database procedures for updating the schema and running operations. They have also developed the [neo4j-graphql-js](https://www.npmjs.com/package/neo4j-graphql-js) package, which converts GraphQL requests directly to Cypher requests and is especially useful in situations where the Neo4j-GraphQL extension is not available.
+As part of the [GRANDstack](https://grandstack.io/) project, [Neo4j](https://neo4j.com/) has built a GraphQL-Endpoint extension named [Neo4j-GraphQL](https://github.com/neo4j-graphql/neo4j-graphql), which provides an [auto-generated API](https://github.com/neo4j-graphql/neo4j-graphql#auto-generated-query-types) and custom database procedures for updating the schema and running operations. They have developed the [neo4j-graphql-js](https://www.npmjs.com/package/neo4j-graphql-js) package, which converts GraphQL requests directly to Cypher requests and is especially useful in situations where the Neo4j-GraphQL extension is not available.
 
-The [Apollo Platform](https://www.apollographql.com/) provides a variety of technologies that support working with GraphQL, including [Apollo Server 2.0](https://www.apollographql.com/docs/apollo-server/v2/) and [Apollo Link](https://www.apollographql.com/docs/link/) for composable networking.  
-  
+The [Apollo Platform](https://www.apollographql.com/) provides a variety of technologies that support working with GraphQL, including [Apollo Server 2.0](https://www.apollographql.com/docs/apollo-server/v2/) and [Apollo Link](https://www.apollographql.com/docs/link/) for composable networking.
+
 [Prisma](https://www.prisma.io/) has developed a collection of [GraphQL resources](https://oss.prisma.io). Their [graphql-binding](https://www.npmjs.com/package/graphql-binding) package makes it easier to use [schema delegation](https://dev-blog.apollodata.com/graphql-schema-delegation-9d832648c543). They have also built the [Prisma API](https://www.prisma.io/docs/reference/prisma-api/overview-ohm2ouceuj), which supports [nested mutations](https://www.prisma.io/docs/reference/prisma-api/mutations-ol0yuoz6go#nested-mutations).
 
-### Goal
+## Goal
 
 A central goal of this project is to use Neo4j graph databases and Apollo server and networking resources to support progressively enhancing a GraphQL API that draws from current developments within the GraphQL community and further explores using GraphQL with graph databases. Given that Neo4j uses a property graph model, it should be interesting to develop features that take advantage of [relationship properties](https://neo4j.com/docs/developer-manual/current/introduction/graphdb-concepts/#graphdb-neo4j-properties).
 
-### Features
+## Features
 
 * Augments your schema without needing to introspect your `Neo4j-GraphQL` HTTP endpoint and uses the ⚡ Bolt driver for all operations. 
 * Allows using the [@cypher](https://github.com/neo4j-graphql/neo4j-graphql#directives) directive from `Neo4j-GraphQL` for computed fields, query types and mutations. 
@@ -22,7 +22,7 @@ A central goal of this project is to use Neo4j graph databases and Apollo server
 * Supports a [@unique](https://www.prisma.io/docs/1.4/reference/service-configuration/data-modelling-%28sdl%29-eiroozae8u/#field-constraints) field directive for node property [constraints](https://neo4j.com/docs/developer-manual/current/get-started/cypher/labels-constraints-and-indexes/) in Neo4j in order to make node selection more robust.  
 * Adds a [id: ID! @unique](https://www.prisma.io/docs/1.4/reference/service-configuration/data-modelling-%28sdl%29-eiroozae8u/#system-fields) field \(if not provided\) to any type with a `@model` directive and uses the [cuid ](https://www.npmjs.com/package/cuid)package to generate id field values for all auto-generated creation mutations.
 
-### Resources
+## Resources
 
 * Using The Neo4j-GraphQL Plugin In Neo4j Desktop [https://blog.grandstack.io/using-the-neo4j-graphql-plugin-in-neo4j-desktop-c8a60aa014d9](https://blog.grandstack.io/using-the-neo4j-graphql-plugin-in-neo4j-desktop-c8a60aa014d9) 
 * GRANDstack --  Build full stack graph applications with ease [https://grandstack.io/](https://grandstack.io/) 
@@ -33,7 +33,7 @@ A central goal of this project is to use Neo4j graph databases and Apollo server
 * Apollo Server 2.0 [https://www.apollographql.com/docs/apollo-server/v2/](https://www.apollographql.com/docs/apollo-server/v2/) 
 * Apollo Link -- Composable networking for GraphQL [https://www.apollographql.com/docs/link/](https://www.apollographql.com/docs/link/)
 
-### Contact
+## Contact
 
 I find the possibility of using GraphQL with Neo4j graph databases very interesting because I'm interested in the underlying activity of people using graph theoretic resources to build up complex descriptions of the world. I'm very happy to see a lot of activity with these technologies and would love to support the development communities in any way I can.
 

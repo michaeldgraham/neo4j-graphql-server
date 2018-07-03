@@ -8,7 +8,7 @@ This is an example of the [GRANDstack Starter](https://grandstack.io/docs/gettin
 
 ![GRANDstack Starter project data in Neo4j Bloom](.gitbook/assets/grandstackseedbloom.png)
 
-### Modifying the Schema
+## Modifying the Schema
 
 There are a few changes to [the schema](https://github.com/grand-stack/grand-stack-starter/blob/master/api/src/graphql-schema.js) worth noting:
 
@@ -51,7 +51,7 @@ type Category @model {
 }
 ```
 
-### Seeding the Database
+## Seeding the Database
 
 ![Batch mutation and generated API in GraphQL Playground](.gitbook/assets/dbseedplayground.png)
 

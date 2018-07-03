@@ -4,7 +4,7 @@ description: A few examples of using the GraphQL Community Graph from Neo4j.
 
 # GraphQL Community Graph
 
-For managing additional Neo4j instances with [Neo4j-GraphQL](https://github.com/neo4j-graphql/neo4j-graphql) installed, you can provide an additional binding configuration to the `bindings` parameter. If the Neo4j-GraphQL extension is not available, then you can use the [neo4j-graphql-js](https://www.npmjs.com/package/neo4j-graphql-js) package to directly translate your GraphQL requests to Cypher requests. 
+For managing additional Neo4j instances with [Neo4j-GraphQL](https://github.com/neo4j-graphql/neo4j-graphql) installed, you can provide an additional binding configuration to the `bindings` parameter. If the Neo4j-GraphQL extension is not available, then you can use the [neo4j-graphql-js](https://www.npmjs.com/package/neo4j-graphql-js) package to directly translate your GraphQL requests to Cypher requests.
 
 ## With Multiple Bindings
 
@@ -100,18 +100,17 @@ const server = Neo4jGraphQLServer({
 server.listen().then( ({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
 });
-
 ```
 
-Notice the `readOnly` parameter set to `true` in the configuration object for the `twitter` binding because the GraphQL Community Graph server only provides read access. 
+Notice the `readOnly` parameter set to `true` in the configuration object for the `twitter` binding because the GraphQL Community Graph server only provides read access.
 
-We can now __use the same auto-generated query types produced by the Neo4j-GraphQL extension to read data from the remote GraphQL Community Graph while also using a binding to manage a local Neo4j instance. 
+We can now \_\_use the same auto-generated query types produced by the Neo4j-GraphQL extension to read data from the remote GraphQL Community Graph while also using a binding to manage a local Neo4j instance.
 
 ![Combined API in GraphQL Playground](.gitbook/assets/twoschemaplayground.png)
 
 ### Remote Query
 
-This query obtains the first 5 most recently created `Tweet` nodes that contain exactly the text "GRAND". A generated `Tweet` resolver uses the `twitter` binding to delegate processing of the Tweet query type to the GraphQL Community Graph endpoint. 
+This query obtains the first 5 most recently created `Tweet` nodes that contain exactly the text "GRAND". A generated `Tweet` resolver uses the `twitter` binding to delegate processing of the Tweet query type to the GraphQL Community Graph endpoint.
 
 `Request`
 
@@ -255,8 +254,4 @@ server.listen().then( ({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
 });
 ```
-
-
-
-
 
