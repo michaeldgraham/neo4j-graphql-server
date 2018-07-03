@@ -1,5 +1,5 @@
 ---
-description: A quick way to get started using neo4j-graphql-binding with Apollo Server 2.0.
+description: A quick way to get started using neo4j-graphql-binding with Apollo Server.
 ---
 
 # Neo4j GraphQL Server
