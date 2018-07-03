@@ -44,6 +44,6 @@ neo4jAssertConstraints({
 
 ## Resources
 
-* APOC: An Introduction to User-Defined Procedures and APOC [https://neo4j.com/blog/intro-user-defined-procedures-apoc/](https://neo4j.com/blog/intro-user-defined-procedures-apoc/) 
+* APOC: An Introduction to User-Defined Procedures and APOC [https://neo4j.com/blog/intro-user-defined-procedures-apoc/](https://neo4j.com/blog/intro-user-defined-procedures-apoc/)  
 * Neo4j Constraints [https://neo4j.com/docs/developer-manual/current/get-started/cypher/labels-constraints-and-indexes/](https://neo4j.com/docs/developer-manual/current/get-started/cypher/labels-constraints-and-indexes/)
 

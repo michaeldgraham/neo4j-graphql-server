@@ -8,10 +8,10 @@ description: >-
 
 ## API Reference
 
-* `typeDefs` \(required\): Your GraphQL type definitions in [SDL format](https://www.prisma.io/blog/graphql-sdl-schema-definition-language-6755bcb9ce51/). 
-* `resolvers`\(required\): A resolvers object to augment. 
-* `query` \(default: `true`\): A Boolean controlling whether to generate resolvers for query types. 
-* `mutation` \(default: `true`\): A Boolean controlling whether to generate resolvers for mutation types. 
+* `typeDefs` \(required\): Your GraphQL type definitions in [SDL format](https://www.prisma.io/blog/graphql-sdl-schema-definition-language-6755bcb9ce51/).  
+* `resolvers`\(required\): A resolvers object to augment.  
+* `query` \(default: `true`\): A Boolean controlling whether to generate resolvers for query types.  
+* `mutation` \(default: `true`\): A Boolean controlling whether to generate resolvers for mutation types.  
 * `bindingKey` \(default: 'neo4j'\) The key of the binding \(stored in your server's context object\) to be used within generated resolvers for operation delegation.
 
 ## Example

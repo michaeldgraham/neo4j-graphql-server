@@ -18,11 +18,11 @@ npm install -s neo4j-graphql-server
 
 The following describes the server setup process based on the default configuration:
 
-1. [neo4jIDL](https://neo4j-graphql-server.gitbook.io/neo4j-graphql-server/~/drafts/-LGWoo4HvGsWb3Dek8dG/primary/api-reference/neo4jidl-1) is called to update your Neo4j-GraphQL schema. 
-2. [neo4jAssertConstraints](https://neo4j-graphql-server.gitbook.io/neo4j-graphql-server/~/edit/drafts/-LGWoo4HvGsWb3Dek8dG/neo4j-graphql-server) is used to support a `@unique` directive by [creating constraints](https://neo4j.com/docs/developer-manual/current/get-started/cypher/labels-constraints-and-indexes/) in your Neo4j instance. It requires that you have the [APOC extension](https://neo4j-contrib.github.io/neo4j-apoc-procedures/) installed. 
-3. [buildNeo4jTypeDefs](https://neo4j-graphql-server.gitbook.io/neo4j-graphql-server/~/edit/drafts/-LGWoo4HvGsWb3Dek8dG/neo4j-graphql-server) then augments the same typeDefs provided to your Neo4j-GraphQL schema. 
-4. [neo4jGraphQLBinding](https://neo4j-graphql-server.gitbook.io/neo4j-graphql-server/~/edit/drafts/-LGWoo4HvGsWb3Dek8dG/neo4j-graphql-server) is used to create a [custom GraphQL Binding](https://oss.prisma.io/content/GraphQL-Binding/04-Creating-your-own-Binding.html) over the resulting augmented typeDefs. The binding is added into your server's [context parameter](https://www.apollographql.com/docs/apollo-server/v2/api/apollo-server.html#constructor-options-lt-ApolloServer-gt) \(default key: 'neo4j' so you can access it the way you normally would access a GraphQL Binding. 
-5. [buildNeo4jResolvers](https://neo4j-graphql-server.gitbook.io/neo4j-graphql-server/~/edit/drafts/-LGWoo4HvGsWb3Dek8dG/neo4j-graphql-server) then generates any unprovided resolvers for query and mutation types that were generated or that use a [@cypher directive](https://github.com/neo4j-graphql/neo4j-graphql#directives). Each resolver uses a created binding to delegate all such queries and mutations to a Neo4j-GraphQL endpoint. 
+1. [neo4jIDL](https://neo4j-graphql-server.gitbook.io/neo4j-graphql-server/~/drafts/-LGWoo4HvGsWb3Dek8dG/primary/api-reference/neo4jidl-1) is called to update your Neo4j-GraphQL schema.  
+2. [neo4jAssertConstraints](https://neo4j-graphql-server.gitbook.io/neo4j-graphql-server/~/edit/drafts/-LGWoo4HvGsWb3Dek8dG/neo4j-graphql-server) is used to support a `@unique` directive by [creating constraints](https://neo4j.com/docs/developer-manual/current/get-started/cypher/labels-constraints-and-indexes/) in your Neo4j instance. It uses the [APOC extension](https://neo4j-contrib.github.io/neo4j-apoc-procedures/). 
+3. [buildNeo4jTypeDefs](https://neo4j-graphql-server.gitbook.io/neo4j-graphql-server/~/edit/drafts/-LGWoo4HvGsWb3Dek8dG/neo4j-graphql-server) then augments the same typeDefs provided to your Neo4j-GraphQL schema.  
+4. [neo4jGraphQLBinding](https://neo4j-graphql-server.gitbook.io/neo4j-graphql-server/~/edit/drafts/-LGWoo4HvGsWb3Dek8dG/neo4j-graphql-server) is used to create a [custom GraphQL Binding](https://oss.prisma.io/content/GraphQL-Binding/04-Creating-your-own-Binding.html) over the resulting augmented typeDefs. The binding is added into your server's [context parameter](https://www.apollographql.com/docs/apollo-server/v2/api/apollo-server.html#constructor-options-lt-ApolloServer-gt) \(default key: 'neo4j' so you can access it the way you normally would access a GraphQL Binding.  
+5. [buildNeo4jResolvers](https://neo4j-graphql-server.gitbook.io/neo4j-graphql-server/~/edit/drafts/-LGWoo4HvGsWb3Dek8dG/neo4j-graphql-server) then generates any unprovided resolvers for query and mutation types that were generated or that use a [@cypher directive](https://github.com/neo4j-graphql/neo4j-graphql#directives). Each resolver uses a created binding to delegate all such queries and mutations to a Neo4j-GraphQL endpoint.  
 6. Finally, steps 1-5 are processed for any additional binding configurations provided in `bindings` and the resulting `typeDefs` and `resolvers` are merged and provided to Apollo Server.
 
 ## Quick Start
@@ -324,22 +324,22 @@ mutation {
 
 All the same arguments as Apollo Server are supported, in addition to the following:
 
-* `typeDefs` \(required\): Your GraphQL type definitions in SDL format 
-* `driver`\(required\): Your Neo4j driver instance \(More info [here](https://www.npmjs.com/package/neo4j-driver)\). 
+* `typeDefs` \(required\): Your GraphQL type definitions in SDL format  
+* `driver`\(required\): Your Neo4j driver instance \(More info [here](https://www.npmjs.com/package/neo4j-driver)\).  
 * `calls` Configures the use of `neo4jAssertConstraints` and `neo4jIDL` during setup.
   * `assert` \(default: `true`\): A boolean control that updates the unique property constraints in your Neo4j instance. 
-  * `idl` \(default: `true`\): A boolean control that updates your Neo4j-GraphQL schema. 
+  * `idl` \(default: `true`\): A boolean control that updates your Neo4j-GraphQL schema.  
 * `augment` Configures the use of `buildNeo4jTypeDefs` and `buildNeo4jResolvers`during setup. 
   * `typeDefs`
     * `query` \(default: `true`\) A boolean controlling the generation of query types.
     * `mutation` \(default: `true`\) A boolean controlling the generation of mutation types.
   * `resolvers`
     * `query` \(default: `true`\) A boolean controlling the generation of resolvers for query types.
-    * `mutation` \(default: `true`\) A boolean controlling the generation of resolvers for mutation types. 
+    * `mutation` \(default: `true`\) A boolean controlling the generation of resolvers for mutation types.  
 * `indexConfig` Configures the management of generated `id` fields.
-  * `use` \(default/only: `'cuid'`\) Configures what method to use when generating id field values.  
-* `bindingKey` \(default: `'neo4j'`\): The key used when storing the created binding into the server's context object. 
-* `log` \(default: `false`\): Logs the result of any delegated query or mutation operation, `buildNeo4jTypeDefs`,`neo4jAssertConstraints`, and `neo4jIDL`. 
+  * `use` \(default/only: `'cuid'`\) Configures what method to use when generating id field values.   
+* `bindingKey` \(default: `'neo4j'`\): The key used when storing the created binding into the server's context object.  
+* `log` \(default: `false`\): Logs the result of any delegated query or mutation operation, `buildNeo4jTypeDefs`,`neo4jAssertConstraints`, and `neo4jIDL`.  
 * `readOnly` \(default: false\): If you only have read access to a remote server, then you can use this parameter to turn off all processes that assume write access. Mutation types are not generated, `idl` and `assert` calls are prevented, and `id` fields are not generated and managed because we would never be able to write them to the instance. So, this results in forcing the following configuration: 
 
 ```text

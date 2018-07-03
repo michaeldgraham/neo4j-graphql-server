@@ -16,9 +16,9 @@ When you send a GraphQL request to a resolver that delegates to the binding, the
 
 ## API Reference
 
-* `typeDefs` \(required\): Your GraphQL type definitions in [SDL format](https://www.prisma.io/blog/graphql-sdl-schema-definition-language-6755bcb9ce51/). 
-* `driver`\(required\): Your Neo4j driver instance \(More info [here](https://www.npmjs.com/package/neo4j-driver)\). 
-* `log` \(default: `false`\): Logs results from query or mutation operations.  
+* `typeDefs` \(required\): Your GraphQL type definitions in [SDL format](https://www.prisma.io/blog/graphql-sdl-schema-definition-language-6755bcb9ce51/).  
+* `driver`\(required\): Your Neo4j driver instance \(More info [here](https://www.npmjs.com/package/neo4j-driver)\).  
+* `log` \(default: `false`\): Logs results from query or mutation operations.   
 * `indexConfig`
   * `use` \(default: `'cuid'`\) Configures what method to use when generating id field values. 
 
@@ -38,6 +38,4 @@ const context = {
   ...
 };
 ```
-
-## Resources
 
