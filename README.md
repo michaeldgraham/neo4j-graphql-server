@@ -31,11 +31,11 @@ A central goal of this project is to use Neo4j graph databases and Apollo server
 * What are GraphQL Bindings? [https://www.prisma.io/blog/graphql-binding-2-0-improved-api-schema-transforms-automatic-codegen-5934cd039db1/](https://www.prisma.io/blog/graphql-binding-2-0-improved-api-schema-transforms-automatic-codegen-5934cd039db1/) 
 * Open Source Prisma Resources [https://oss.prisma.io](https://oss.prisma.io/)/ 
 * Apollo Server 2.0 [https://www.apollographql.com/docs/apollo-server/v2/](https://www.apollographql.com/docs/apollo-server/v2/) 
-* Apollo Link -- Composable networking for GraphQL [https://www.apollographql.com/docs/link/](https://www.apollographql.com/docs/link/) 
+* Apollo Link -- Composable networking for GraphQL [https://www.apollographql.com/docs/link/](https://www.apollographql.com/docs/link/)
 
+### Contact
 
+I find the possibility of using GraphQL with Neo4j graph databases very interesting because I'm interested in the underlying activity of people using graph theoretic resources to build up complex descriptions of the world. I'm very happy to see that there is a lot of activity with these technologies and would love to support the development communities in any way I can!
 
-
-
-
+If you want to work together or need help with something, feel free to email me at michaeldgrahams@gmail.com or reach out on [LinkedIn](https://www.linkedin.com/in/michael-d-graham/) or [Twitter](https://twitter.com/michaeldgrahams).
 
