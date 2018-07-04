@@ -12,7 +12,7 @@ npm install -s neo4j-graphql-server
 
 ## Strategy
 
-`Neo4jGraphQLServer` uses the [neo4j-graphql-binding](https://www.npmjs.com/package/neo4j-graphql-binding) package with [Apollo Server](https://www.apollographql.com/docs/apollo-server/v2/) to make it easier to get started using the generated schema or multiple bindings.
+This package uses [neo4j-graphql-binding](https://www.npmjs.com/package/neo4j-graphql-binding) with [Apollo Server](https://www.apollographql.com/docs/apollo-server/v2/) to make it easier to get started using a generated API or setting up multiple bindings.
 
 ![Create this graph in the Quick Start below! \(image from Neo4j Bloom\)](.gitbook/assets/integrationgraph.png)
 
