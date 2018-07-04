@@ -1,5 +1,5 @@
 ---
-description: A GraphQL binding for your Neo4j-GraphQL endpoint.
+description: A GraphQL binding for your Neo4j GraphQL API.
 ---
 
 # Neo4j GraphQL Binding
