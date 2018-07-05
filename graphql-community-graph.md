@@ -104,7 +104,7 @@ server.listen().then( ({ url }) => {
 
 Notice the `readOnly` parameter set to `true` in the configuration object for the `twitter` binding because the GraphQL Community Graph server only provides read access.
 
-We can now \_\_use the same auto-generated query types produced by the Neo4j-GraphQL extension to read data from the remote GraphQL Community Graph while also using a binding to manage a local Neo4j instance.
+We can now use the same auto-generated query types produced by the Neo4j-GraphQL extension to read data from the remote GraphQL Community Graph while also using a binding to manage a local Neo4j instance.
 
 ![Combined API in GraphQL Playground](.gitbook/assets/twoschemaplayground.png)
 
