@@ -251,7 +251,7 @@ See the section on [using the GraphQL Community Graph](https://neo4j-graphql-ser
 
 This mutation creates a [Prism Graph](http://mathworld.wolfram.com/PrismGraph.html)! 🌈
 
-![Prism Graph](.gitbook/assets/prismgraph-2.png)
+![Prism Graph in Neo4j Bloom](.gitbook/assets/prismgraph-2.png)
 
 ```graphql
 mutation {
