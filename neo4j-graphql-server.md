@@ -239,6 +239,8 @@ Query: {
   coActors: (obj, params, ctx, info) => {
     return ctx.neo4j.query.coActors(params, info);
   }
+  // Movie (generated)
+  // Person
 },
 Mutation: {
   rateMovie: async (obj, params, ctx, info) => {
@@ -246,9 +248,8 @@ Mutation: {
     // using result
     return result;
   }
-  // Generated
-  // createMovie...
-  // createPerson...
+  // createMovie (generated)
+  // createPerson
 }
 ```
 
