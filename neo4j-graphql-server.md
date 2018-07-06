@@ -246,6 +246,9 @@ Mutation: {
     // using result
     return result;
   }
+  // Generated
+  // createMovie...
+  // createPerson...
 }
 ```
 
