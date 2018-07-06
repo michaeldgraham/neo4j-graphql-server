@@ -29,10 +29,9 @@ The following describes the server setup process based on the default configurat
 
 This example server setup uses only auto-generated query and mutation types.
 
-```javascript
-import { Neo4jGraphQLServer } from 'neo4j-graphql-server';
-import { v1 as neo4j } from 'neo4j-driver';
+`typeDefs`
 
+```graphql
 const typeDefs = `
   type Technology @model {
     name: String! @unique
@@ -42,6 +41,13 @@ const typeDefs = `
     )
   }
 `;
+```
+
+`Server`
+
+```javascript
+import { Neo4jGraphQLServer } from 'neo4j-graphql-server';
+import { v1 as neo4j } from 'neo4j-driver';
 
 const driver = neo4j.driver(
   process.env.NEO4J_URI || "bolt://localhost:7687",
@@ -193,53 +199,53 @@ The below `typeDefs` shows the use of the `@cypher` directive for a computed fie
 `typeDefs`
 
 ```graphql
-type Technology @model {
-  name: String! @unique
-  integration: [Technology] @relation(name: "HAPPINESS", direction: OUT)
-  # Computed field
-  integrationCount: Int @cypher(statement: """ 
-    MATCH (this)-[:HAPPINESS]->(t:Technology)
-    RETURN count(t)
+type Movie @model {
+  title: String!
+  released: Int
+  actors: [Person] @relation(name:"ACTED_IN",direction:IN)
+  # computed field
+  directors: [Person] @cypher(statement: """
+    MATCH (this)<-[:DIRECTED]-(d) RETURN d
   """)
 }
-type Query {
-  # Custom @cypher query with same name as generated query type
-  Technology: [Technology] @cypher(statement: """
-    MATCH (t:Technology) RETURN t
+type Person @model {
+  name: String!
+  born: Int
+  movies: [Movie] @relation(name:"ACTED_IN")
+}
+type QueryType {
+  coActors(name:ID!): [Person] @cypher(statement:"""
+    MATCH (p:Person {name:$name})-[:ACTED_IN]->()<-[:ACTED_IN]-(co) 
+    RETURN distinct co
   """)
 }
-type Mutation {
-  # Custom delete mutation
-  deleteTechnology(id: ID!): Boolean @cypher(statement: """
-    MATCH (t: Technology {id: $id})
-    DETACH DELETE t
-    RETURN TRUE
+type MutationType {
+  rateMovie(user:ID!, movie:ID!, rating:Int!): Int @cypher(statement: """
+    MATCH (p:Person {name:$user}),(m:Movie {title:$movie}) 
+    MERGE (p)-[r:RATED]->(m) SET r.rating=$rating 
+    RETURN r.rating
   """)
 }
 schema {
-  query: Query
-  mutation: Mutation
+   query: QueryType
+   mutation: MutationType
 }
 ```
 
-The corresponding `resolvers` can be provided and use bindings as shown:
+The corresponding `resolvers` can be provided if you want to handle the data or be explicit. Otherwise, they will be generated.
 
 ```javascript
 Query: {
-  // Resolver for a provided @cypher query type with the same name 
-  // as a generated query type
-  Technology: (obj, params, ctx, info) => {
-    return ctx.neo4j.query.Technology(params, info);
+  coActors: (obj, params, ctx, info) => {
+    return ctx.neo4j.query.coActors(params, info);
   }
 },
 Mutation: {
-  // Resolver for auto-generated mutation type
-  createTechnology: async (obj, params, ctx, info) => {
-    const result = await ctx.neo4j.mutation.createTechnology(params, info);
-    // post-processing of result
+  rateMovie: async (obj, params, ctx, info) => {
+    const result = await ctx.neo4j.mutation.rateMovie(params, info);
+    // using result
     return result;
   }
-  // deleteTechnology resolver is generated
 }
 ```
 
