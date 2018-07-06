@@ -213,13 +213,13 @@ type Person @model {
   born: Int
   movies: [Movie] @relation(name:"ACTED_IN")
 }
-type QueryType {
+type Query {
   coActors(name:ID!): [Person] @cypher(statement:"""
     MATCH (p:Person {name:$name})-[:ACTED_IN]->()<-[:ACTED_IN]-(co) 
     RETURN distinct co
   """)
 }
-type MutationType {
+type Mutation {
   rateMovie(user:ID!, movie:ID!, rating:Int!): Int @cypher(statement: """
     MATCH (p:Person {name:$user}),(m:Movie {title:$movie}) 
     MERGE (p)-[r:RATED]->(m) SET r.rating=$rating 
@@ -227,8 +227,8 @@ type MutationType {
   """)
 }
 schema {
-   query: QueryType
-   mutation: MutationType
+   query: Query
+   mutation: Mutation
 }
 ```
 
