@@ -22,6 +22,12 @@ A central goal of this project is to use Neo4j graph databases and Apollo server
 * Supports a [@unique](https://www.prisma.io/docs/1.4/reference/service-configuration/data-modelling-%28sdl%29-eiroozae8u/#field-constraints) field directive for node property [constraints](https://neo4j.com/docs/developer-manual/current/get-started/cypher/labels-constraints-and-indexes/) in Neo4j in order to make node selection more robust.   
 * Adds a [id: ID! @unique](https://www.prisma.io/docs/1.4/reference/service-configuration/data-modelling-%28sdl%29-eiroozae8u/#system-fields) field \(if not provided\) to any type with a `@model` directive and uses the [cuid ](https://www.npmjs.com/package/cuid)package to generate id field values for all auto-generated creation mutations.
 
+## Contact
+
+I find the possibility of using GraphQL with Neo4j graph databases very interesting because I'm interested in the underlying activity of people using graph theoretic resources to build up complex descriptions of the world. I'm very happy to see a lot of activity with these technologies and would love to support the development communities in any way I can.
+
+If you want to work together or need help with something, feel free to email me at `michaeldgrahams@gmail.com` or reach out on [LinkedIn](https://www.linkedin.com/in/michael-d-graham/) or [Twitter](https://twitter.com/michaeldgrahams).
+
 ## Resources
 
 * Using The Neo4j-GraphQL Plugin In Neo4j Desktop  [https://blog.grandstack.io/using-the-neo4j-graphql-plugin-in-neo4j-desktop-c8a60aa014d9](https://blog.grandstack.io/using-the-neo4j-graphql-plugin-in-neo4j-desktop-c8a60aa014d9)  
@@ -33,9 +39,5 @@ A central goal of this project is to use Neo4j graph databases and Apollo server
 * Apollo Server 2.0  [https://www.apollographql.com/docs/apollo-server/v2/](https://www.apollographql.com/docs/apollo-server/v2/)  
 * Apollo Link -- Composable networking for GraphQL [https://www.apollographql.com/docs/link/](https://www.apollographql.com/docs/link/)
 
-## Contact
 
-I find the possibility of using GraphQL with Neo4j graph databases very interesting because I'm interested in the underlying activity of people using graph theoretic resources to build up complex descriptions of the world. I'm very happy to see a lot of activity with these technologies and would love to support the development communities in any way I can.
-
-If you want to work together or need help with something, feel free to email me at `michaeldgrahams@gmail.com` or reach out on [LinkedIn](https://www.linkedin.com/in/michael-d-graham/) or [Twitter](https://twitter.com/michaeldgrahams).
 
